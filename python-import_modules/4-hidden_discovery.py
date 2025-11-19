@@ -4,13 +4,11 @@ import marshal
 import types
 
 if __name__ == "__main__":
-    # Open the .pyc file
     with open("/tmp/hidden_4.pyc", "rb") as f:
-        f.read(16)  # skip header
+        f.read(16)
         code_obj = marshal.load(f)
 
     names = set()
-
     def collect_names(co):
         for name in co.co_names:
             if not name.startswith("__"):
