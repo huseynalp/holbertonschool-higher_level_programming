@@ -7,14 +7,14 @@ def safe_print_list_integers(my_list=[], x=0):
     count = 0
     for i in range(x):
         try:
-            # Try to print only integers
-            print("{:d}".format(my_list[i]), end="")
+            value = my_list[i]
+            print("{:d}".format(value), end="")
             count += 1
         except (ValueError, TypeError):
             # Skip non-integers silently
             continue
         except IndexError:
-            # Stop if x exceeds list length
+            # Stop if i exceeds list length
             break
     print()
     return count
