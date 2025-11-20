@@ -1,29 +1,19 @@
 #!/usr/bin/python3
 def list_division(my_list_1, my_list_2, list_length):
-    """
-    Divides element by element two lists and returns a new list of length list_length.
-    Handles exceptions for type errors, zero division, and out-of-range access.
-    """
     new_list = []
-
+    temp = 0
     for i in range(list_length):
         try:
-            a = my_list_1[i]
-            b = my_list_2[i]
-            # Check types
-            if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-                raise TypeError
-            result = a / b
-        except IndexError:
-            print("out of range")
-            result = 0
-        except ZeroDivisionError:
-            print("division by 0")
-            result = 0
-        except TypeError:
+            temp = my_list_1[i] / my_list_2[i]
+        except (TypeError, ValueError):
+            temp = 0
             print("wrong type")
-            result = 0
+        except ZeroDivisionError:
+            temp = 0
+            print("division by 0")
+        except IndexError:
+            temp = 0
+            print("out of range")
         finally:
-            new_list.append(result)
-
+            new_list.append(temp)
     return new_list
