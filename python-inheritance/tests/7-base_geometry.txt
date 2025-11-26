@@ -1,16 +1,115 @@
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry()
->>> bg.integer_validator("my_int", 12)
->>> bg.integer_validator("width", 89)
->>> bg.integer_validator("name", "John")
-Traceback (most recent call last):
-    ...
-TypeError: name must be an integer
->>> bg.integer_validator("age", 0)
-Traceback (most recent call last):
-    ...
-ValueError: age must be greater than 0
->>> bg.integer_validator("distance", -4)
-Traceback (most recent call last):
-    ...
-ValueError: distance must be greater than 0
+===================================
+Test cases for BaseGeometry class
+===================================
+
+Import the class:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Test basic instantiation:
+    >>> bg = BaseGeometry()
+    >>> type(bg)
+    <class '7-base_geometry.BaseGeometry'>
+
+Test area() method raises Exception:
+    >>> bg.area()
+    Traceback (most recent call last):
+        ...
+    Exception: area() is not implemented
+
+Test integer_validator with valid integers:
+    >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("width", 89)
+    >>> bg.integer_validator("height", 1)
+
+Test integer_validator with string:
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+Test integer_validator with zero:
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: age must be greater than 0
+
+Test integer_validator with negative number:
+    >>> bg.integer_validator("distance", -4)
+    Traceback (most recent call last):
+        ...
+    ValueError: distance must be greater than 0
+
+Test integer_validator with float:
+    >>> bg.integer_validator("value", 3.14)
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+Test integer_validator with boolean True:
+    >>> bg.integer_validator("flag", True)
+    Traceback (most recent call last):
+        ...
+    TypeError: flag must be an integer
+
+Test integer_validator with boolean False:
+    >>> bg.integer_validator("flag", False)
+    Traceback (most recent call last):
+        ...
+    TypeError: flag must be an integer
+
+Test integer_validator with None:
+    >>> bg.integer_validator("value", None)
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+Test integer_validator with list:
+    >>> bg.integer_validator("value", [1, 2, 3])
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+Test integer_validator with tuple:
+    >>> bg.integer_validator("value", (1, 2))
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+Test integer_validator with dictionary:
+    >>> bg.integer_validator("value", {"key": "value"})
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+Test integer_validator with set:
+    >>> bg.integer_validator("value", {1, 2, 3})
+    Traceback (most recent call last):
+        ...
+    TypeError: value must be an integer
+
+Test integer_validator with large positive integer:
+    >>> bg.integer_validator("big", 999999999)
+
+Test integer_validator with large negative integer:
+    >>> bg.integer_validator("big", -999999999)
+    Traceback (most recent call last):
+        ...
+    ValueError: big must be greater than 0
+
+Test integer_validator with no arguments:
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+Test integer_validator with only one argument:
+    >>> bg.integer_validator("name")
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+Test area with arguments:
+    >>> bg.area(5)
+    Traceback (most recent call last):
+        ...
+    TypeError: area() takes 1 positional argument but 2 were given
