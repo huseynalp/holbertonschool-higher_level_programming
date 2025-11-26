@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """Module defining a Student class with JSON serialization support."""
 
@@ -14,7 +13,7 @@ class Student:
 
     def to_json(self, attrs=None):
         """Return a dictionary representation of the Student instance.
-        
+
         If attrs is a list of strings, only attributes in that list
         are included. Otherwise, all attributes are included.
         """
