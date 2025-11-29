@@ -1,5 +1,5 @@
--- 9-full.creation sql
--- Creation of second_table with multiple rows
+-- 9-full_creation.sql
+-- Create second_table if it doesn't exist and insert multiple rows
 
 CREATE TABLE IF NOT EXISTS second_table (
     id INT,
@@ -7,14 +7,8 @@ CREATE TABLE IF NOT EXISTS second_table (
     score INT
 );
 
--- Insert multiple rows into table
-
-INSERT INTO sceond_table (id, name, score) VALUES
+INSERT INTO second_table (id, name, score) VALUES
 (1, 'John', 10),
 (2, 'Alex', 3),
 (3, 'Bob', 14),
 (4, 'George', 8);
-
--- Display all rows
-
-SELECT * FROM second_tables;
