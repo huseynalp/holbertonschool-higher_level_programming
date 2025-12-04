@@ -21,7 +21,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             
         elif self.path == "/data":
             # Data endpoint - returns JSON data
-            content = {"name": "Holberton", "mission": "School"}
+            content = {"name": "John", "age": 30, "city": "New York"}
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
@@ -29,11 +29,10 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             
         elif self.path == "/status":
             # Status endpoint - returns API status
-            content = {"status": "OK"}
             self.send_response(200)
-            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            self.wfile.write(json.dumps(content).encode())
+            self.wfile.write(b"OK")
             
         else:
             # Undefined endpoint - returns 404 error
