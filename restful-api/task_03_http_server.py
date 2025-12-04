@@ -1,38 +1,46 @@
 #!/usr/bin/python3
+"""
+A simple HTTP server implementation using Python's http.server module.
+This server handles GET requests for multiple endpoints and serves JSON data.
+"""
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    """Handler for HTTP GET requests."""
+    
     def do_GET(self):
-        """Handle GET requests."""
+        """Handle GET requests for different endpoints."""
         if self.path == "/":
+            # Root endpoint - returns simple text message
             self.send_response(200)
             self.send_header("Content-Type", "text/plain")
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
-
+            
         elif self.path == "/data":
+            # Data endpoint - returns JSON data
             content = {"name": "Holberton", "mission": "School"}
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps(content).encode())
-
+            
         elif self.path == "/status":
+            # Status endpoint - returns API status
             content = {"status": "OK"}
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps(content).encode())
-
+            
         else:
-            # REQUIRED BEHAVIOR FOR TEST 4
+            # Undefined endpoint - returns 404 error
             self.send_response(404)
-            self.send_header("Content-Type", "application/json")
+            self.send_header("Content-Type", "text/plain")
             self.end_headers()
-            content = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(content).encode())
+            self.wfile.write(b"Endpoint not found")
 
 
 if __name__ == "__main__":
