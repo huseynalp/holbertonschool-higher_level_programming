@@ -48,9 +48,8 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
 
-            error = {"error": "Endpoint not found"}
-            self.wfile.write(json.dumps(error).encode("utf-8"))
-
+            error_json = '{"error":"Endpoint not found"}'
+            self.wfile.write(error_json.encode("utf-8"))
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler):
     """Run the HTTP server on port 8000."""
