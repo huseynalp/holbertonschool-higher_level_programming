@@ -9,7 +9,7 @@ Includes:
 import requests
 import csv
 
-git remote set-url origin https://github.com/huseynalp/holbertonschool-higher_level_programming.git
+
 def fetch_and_print_posts():
     """
     Fetch all posts from JSONPlaceholder.
